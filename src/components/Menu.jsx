@@ -72,6 +72,7 @@ const Menu = () => {
 
           return (
             <button
+              key={cocktail.id}
               id={cocktail.id}
               className={`${
                 isActive
