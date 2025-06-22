@@ -6,12 +6,14 @@ import gsap from "gsap";
 const Menu = () => {
   const contentRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState("right");
 
   useGSAP(() => {
     gsap.fromTo("#title", { opacity: 0 }, { opacity: 1, duration: 1 });
+    const xStart = direction === "right" ? -100 : 100;
     gsap.fromTo(
       ".cocktail img",
-      { opacity: 0, xPercent: -100 },
+      { opacity: 0, xPercent: xStart },
       { opacity: 1, xPercent: 0, duration: 1, ease: "power1.inOut" }
     );
     gsap.fromTo(
@@ -30,8 +32,9 @@ const Menu = () => {
 
   const totalCocktails = sliderLists.length;
 
-  const goToSlide = (index) => {
+  const goToSlide = (index, animationDirection = "right") => {
     const newIndex = (index + totalCocktails) % totalCocktails;
+    setDirection(animationDirection);
     setCurrentIndex(newIndex);
   };
 
@@ -79,7 +82,11 @@ const Menu = () => {
                   ? "text-white border-white"
                   : "text-white/50 border-white/50"
               }`}
-              onClick={() => goToSlide(index)}
+              onClick={() => {
+                const animationDirection =
+                  index > currentIndex ? "right" : "left";
+                goToSlide(index, animationDirection);
+              }}
             >
               {cocktail.name}
             </button>
@@ -91,7 +98,7 @@ const Menu = () => {
         <div className="arrows">
           <button
             className="text-left"
-            onClick={() => goToSlide(currentIndex - 1)}
+            onClick={() => goToSlide(currentIndex - 1, "left")}
           >
             <span>{prevCocktail.name}</span>
             <img
@@ -102,7 +109,7 @@ const Menu = () => {
           </button>
           <button
             className="text-left"
-            onClick={() => goToSlide(currentIndex + 1)}
+            onClick={() => goToSlide(currentIndex + 1, "right")}
           >
             <span>{nextCocktail.name}</span>
             <img

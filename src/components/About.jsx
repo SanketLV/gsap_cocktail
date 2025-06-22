@@ -54,13 +54,60 @@ const About = () => {
               detail — from the first muddle to the final garnish. That care is
               what turns a simple drink into something truly memorable.
             </p>
-            <div>
-              <p className="md:text-3xl text-xl font-bold">
-                <span>4.5</span>/5
-              </p>
-              <p className="text-sm text-white-100">
-                More than +12000 customers
-              </p>
+            <div className="flex flex-row items-center justify-start gap-x-8">
+              <div>
+                <div className="flex flex-row justify-start">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <img
+                      key={i}
+                      src="/images/star.png"
+                      alt="Star"
+                      className="size-4"
+                    />
+                  ))}
+                </div>
+                <div>
+                  <p className="md:text-3xl text-xl font-bold">
+                    <span>4.5</span>/5
+                  </p>
+                  <p className="text-sm text-white-100">
+                    More than +12000 customers
+                  </p>
+                </div>
+              </div>
+              <div
+                className="bg-gray-800/50 w-[3px] h-full my-4 rounded-xl"
+                style={{
+                  backgroundImage: `url("/images/noise.png")`,
+                }}
+              />
+              <div
+                className="flex flex-row -space-x-5 p-4 rounded-full bg-gray-800/50"
+                style={{
+                  backgroundImage: `url("/images/noise.png")`,
+                }}
+              >
+                <img
+                  src="/images/profile1.png"
+                  alt="profile-1"
+                  className="w-12 h-12 rounded-full border-2 border-gray-800 relative z-10"
+                />
+                <img
+                  src="/images/profile2.png"
+                  alt="profile-2"
+                  className="w-12 h-12 rounded-full border-2 border-gray-800 relative z-20"
+                />
+                <img
+                  src="/images/profile3.png"
+                  alt="profile-3"
+                  className="w-12 h-12 rounded-full border-2 border-gray-800 relative z-30"
+                />
+                <img
+                  src="/images/profile4.png"
+                  alt="profile-4"
+                  className="w-12 h-12 rounded-full border-2 border-gray-800 relative z-40"
+                />
+              </div>
             </div>
           </div>
         </div>
