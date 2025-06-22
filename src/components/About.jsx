@@ -2,6 +2,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { SplitText } from "gsap/all";
 import React from "react";
+import { profileLists } from "../../constants";
 
 const About = () => {
   useGSAP(() => {
@@ -87,26 +88,14 @@ const About = () => {
                   backgroundImage: `url("/images/noise.png")`,
                 }}
               >
-                <img
-                  src="/images/profile1.png"
-                  alt="profile-1"
-                  className="w-12 h-12 rounded-full border-2 border-gray-800 relative z-10"
-                />
-                <img
-                  src="/images/profile2.png"
-                  alt="profile-2"
-                  className="w-12 h-12 rounded-full border-2 border-gray-800 relative z-20"
-                />
-                <img
-                  src="/images/profile3.png"
-                  alt="profile-3"
-                  className="w-12 h-12 rounded-full border-2 border-gray-800 relative z-30"
-                />
-                <img
-                  src="/images/profile4.png"
-                  alt="profile-4"
-                  className="w-12 h-12 rounded-full border-2 border-gray-800 relative z-40"
-                />
+                {profileLists.map((profile, i) => (
+                  <img
+                    key={i}
+                    src={profile.src}
+                    alt={profile.alt}
+                    className="w-12 h-12 rounded-full border-2 border-gray-800 relative z-10"
+                  />
+                ))}
               </div>
             </div>
           </div>
